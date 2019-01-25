@@ -19,7 +19,9 @@ public class TicketMachineTest {
 	// S1 : le prix affiché correspond à l’initialisation
 	public void priceIsCorrectlyInitialized() {
 		// Paramètres : message si erreur, valeur attendue, valeur réelle
-		assertEquals("Initialisation incorrecte du prix", PRICE, machine.getPrice());
+		assertEquals("Initialisation incorrecte du prix", 
+			PRICE, 
+			machine.getPrice());
 	}
 
 	@Test
@@ -27,7 +29,9 @@ public class TicketMachineTest {
 	public void insertMoneyChangesBalance() {
 		machine.insertMoney(10);
 		machine.insertMoney(20);
-		assertEquals("La balance n'est pas correctement mise à jour", 10 + 20, machine.getBalance()); // Les montants ont été correctement additionnés               
+		assertEquals("La balance n'est pas correctement mise à jour", 
+			10 + 20, 
+			machine.getBalance()); // Les montants ont été correctement additionnés               
 	}
 
 	// S3 : on n’imprime pas le ticket si le montant inséré est insuffisant
@@ -112,8 +116,8 @@ public class TicketMachineTest {
 	}
 
 	// S10 : on ne peut pas créer de machine qui délivre des tickets dont le prix est négatif
-	@Test
-	public void ticketPriceMustBePositive() {
+	@Test 
+	public void ticketPriceMustBePositiveV1() {
 		try {
 			new TicketMachine(0);
 			// Si j'arrive ici, c'est pas normal, le test doit échouer
@@ -121,6 +125,12 @@ public class TicketMachineTest {
 		} catch (IllegalArgumentException e) {
 			// Si j'arrive ici, c'est normal, c'est ce qu'on souhaite
 		}
+	}	
+
+	// S10 : on ne peut pas créer de machine qui délivre des tickets dont le prix est négatif
+	@Test (expected = IllegalArgumentException.class)
+	public void ticketPriceMustBePositiveV2() {
+			new TicketMachine(-1);
 	}	
 	
 }
