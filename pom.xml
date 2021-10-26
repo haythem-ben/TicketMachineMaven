@@ -19,17 +19,32 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-            
+            <!-- Exécute les tests unitaires, génère les résultats en format .txt et .xml -->
+            <!-- https://maven.apache.org/surefire/maven-surefire-plugin/ -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>
-            
+            <!-- Exécute les tests d'intégration -->
+            <!-- https://maven.apache.org/surefire/maven-failsafe-plugin/ -->            
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>
-                       
+            <!-- Génère la documentation javadoc -->
+            <!-- https://maven.apache.org/plugins/maven-javadoc-plugin/index.html -->            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <!-- Exemple de configuration -->
+                <configuration>
+                    <!-- On inclut uniquement les méthodes publiques dans la documentation générée -->
+                    <show>public</show>
+                </configuration>
+            </plugin>                                               
+            <!-- Calcule la couverture de test -->
+            <!-- https://maven.apache.org/surefire/maven-failsafe-plugin/ -->            
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

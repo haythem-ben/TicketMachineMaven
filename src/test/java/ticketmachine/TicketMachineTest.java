@@ -136,7 +136,7 @@ public class TicketMachineTest {
 	// S10 : on ne peut pas créer de machine qui délivre des tickets dont le prix est négatif
 	@Test 
 	public void ticketPriceMustBePositiveV2() {
-		Exception e = assertThrows(Exception.class, () -> {
+		Exception e = assertThrows(IllegalArgumentException.class, () -> {
 			new TicketMachine(-1);
 		});
 		assertTrue(e.getMessage().contains("must be positive"));

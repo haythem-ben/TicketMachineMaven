@@ -1,1 +1,8 @@
 target/
+.settings/
+.vscode/
+nbproject/
+.classpath
+.project
+jshell.history
+nbactions.xml
